@@ -7,4 +7,9 @@ defmodule TrackMyClassWeb.Api.SchoolController do
     schools = Schools.list_schools()
     render(conn, :index, schools: schools)
   end
+
+  def show(conn, %{"id" => id}) do
+    school = Schools.get_school!(id)
+    render(conn, :show, school: school)
+  end
 end

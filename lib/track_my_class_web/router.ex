@@ -1,5 +1,4 @@
 defmodule TrackMyClassWeb.Router do
-  alias TrackMyClassWeb.Api.SchoolController
   use TrackMyClassWeb, :router
 
   pipeline :api do
