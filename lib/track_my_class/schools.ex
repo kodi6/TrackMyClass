@@ -12,4 +12,10 @@ defmodule TrackMyClass.Schools do
 
   def get_school!(id), do: Repo.get!(School, id)
 
+  def create_school(attrs \\ %{}) do
+    %School{}
+    |> School.changeset(attrs)
+    |> Repo.insert()
+  end
+
 end
