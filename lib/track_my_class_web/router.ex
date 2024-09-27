@@ -1,4 +1,5 @@
 defmodule TrackMyClassWeb.Router do
+  alias TrackMyClassWeb.Api.SchoolController
   use TrackMyClassWeb, :router
 
   pipeline :api do
@@ -9,5 +10,6 @@ defmodule TrackMyClassWeb.Router do
     pipe_through :api
 
     get "/schools", SchoolController, :index
+    get "/schools/:id", SchoolController, :show
   end
 end
