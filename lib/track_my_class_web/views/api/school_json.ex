@@ -12,4 +12,8 @@ defmodule TrackMyClassWeb.Api.SchoolJSON do
       address: school.address
     }
   end
+
+  def show(%{school: school}) do
+    %{data: data(school)}
+  end
 end
