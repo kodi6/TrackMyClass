@@ -7,5 +7,7 @@ defmodule TrackMyClassWeb.Router do
 
   scope "/api", TrackMyClassWeb do
     pipe_through :api
+
+    get "/schools", SchoolController, :index
   end
 end
