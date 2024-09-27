@@ -10,4 +10,6 @@ defmodule TrackMyClass.Schools do
     Repo.all(School)
   end
 
+  def get_school!(id), do: Repo.get!(School, id)
+
 end
