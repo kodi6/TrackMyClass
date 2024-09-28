@@ -11,5 +11,6 @@ defmodule TrackMyClassWeb.Router do
     get "/schools", SchoolController, :index
     get "/schools/:id", SchoolController, :show
     post "/schools", SchoolController, :create
+    put "/schools/id", SchoolController, :update
   end
 end
