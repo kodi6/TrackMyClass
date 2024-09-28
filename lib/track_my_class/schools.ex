@@ -11,7 +11,7 @@ defmodule TrackMyClass.Schools do
     Repo.all(School)
   end
 
-  def get_school!(id), do: Repo.get!(School, id)
+  def get_school!(id), do: Repo.get(School, id)
 
   def create_school(attrs \\ %{}) do
     %School{}
@@ -44,7 +44,7 @@ defmodule TrackMyClass.Schools do
   def get_school_student(school_id, student_id) do
     Student
     |> where([s], s.school_id == ^school_id and s.id == ^student_id)
-    |> Repo.one!()
+    |> Repo.one()
   end
 
   def update_school_student(school_id, student_id, attrs) do
