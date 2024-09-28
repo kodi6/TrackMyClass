@@ -21,4 +21,11 @@ defmodule TrackMyClassWeb.Api.SchoolController do
       |> render(:show, school: school)
     end
   end
+
+  def update(conn, %{"id" => id, "school" => school_params}) do
+    school = Schools.get_school!(id)
+    with {:ok, %School{} = school} <- Schools.update_school(school, school_params) do
+      render(conn, :show, school: school)
+    end
+  end
 end
