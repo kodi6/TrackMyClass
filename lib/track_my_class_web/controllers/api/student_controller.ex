@@ -6,13 +6,14 @@ defmodule TrackMyClassWeb.Api.StudentController do
 
   action_fallback TrackMyClassWeb.FallbackController
 
+
   def index(conn, %{"school_id" => school_id}) do
     students = Schools.list_students(school_id)
     case students do
       [] ->
         {:error, :not_found}
 
-        students ->
+      students ->
         render(conn, :index, students: students)
       end
   end
@@ -27,11 +28,10 @@ defmodule TrackMyClassWeb.Api.StudentController do
 
   def show(conn, %{"school_id" => school_id, "student_id" => student_id}) do
     case Schools.get_school_student(school_id, student_id) do
-      nil ->
-        {:error, :not_found}
-
-        student ->
+      %Student{} = student ->
         render(conn, :show, student: student)
+        _ ->
+          {:error, :not_found}
       end
   end
 

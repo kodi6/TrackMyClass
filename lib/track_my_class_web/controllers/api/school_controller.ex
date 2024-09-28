@@ -8,12 +8,22 @@ defmodule TrackMyClassWeb.Api.SchoolController do
 
   def index(conn, _params) do
     schools = Schools.list_schools()
-    render(conn, :index, schools: schools)
+    case schools do
+      [] ->
+        {:error, :not_found}
+
+        schools ->
+        render(conn, :index, schools: schools)
+      end
   end
 
   def show(conn, %{"school_id" => school_id}) do
-    school = Schools.get_school!(school_id)
-    render(conn, :show, school: school)
+    case Schools.get_school!(school_id) do
+      %School{} = school ->
+        render(conn, :show, school: school)
+        _ ->
+          {:error, :not_found}
+    end
   end
 
   def create(conn, %{"school" => school_params}) do
