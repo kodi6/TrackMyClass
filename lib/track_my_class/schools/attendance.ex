@@ -8,7 +8,7 @@ defmodule TrackMyClass.Schools.Attendance do
     field :date, :date
     field :forenoon_present, :boolean, default: true
     field :afternoon_present, :boolean, default: true
-    field :student_id, :binary_id
+    belongs_to :student, TrackMyClass.Schools.Student
 
     timestamps(type: :utc_datetime)
   end
@@ -16,7 +16,7 @@ defmodule TrackMyClass.Schools.Attendance do
   @doc false
   def changeset(attendance, attrs) do
     attendance
-    |> cast(attrs, [:date, :forenoon_present, :afternoon_present])
-    |> validate_required([:date, :forenoon_present, :afternoon_present])
+    |> cast(attrs, [:date, :forenoon_present, :afternoon_present, :student_id])
+    |> validate_required([:date, :forenoon_present, :afternoon_present, :student_id])
   end
 end

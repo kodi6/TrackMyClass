@@ -10,7 +10,7 @@ defmodule TrackMyClass.Schools.Student do
     field :enrollment_number, :string
     field :dob, :date
     field :gender, :string
-    field :school_id, :binary_id
+    belongs_to :school, TrackMyClass.Schools.School
 
     timestamps(type: :utc_datetime)
   end
@@ -18,8 +18,8 @@ defmodule TrackMyClass.Schools.Student do
   @doc false
   def changeset(student, attrs) do
     student
-    |> cast(attrs, [:first_name, :last_name, :enrollment_number, :dob, :gender])
-    |> validate_required([:first_name, :last_name, :enrollment_number, :dob, :gender])
+    |> cast(attrs, [:first_name, :last_name, :enrollment_number, :dob, :gender, :school_id])
+    |> validate_required([:first_name, :last_name, :enrollment_number, :dob, :gender, :school_id])
     |> unique_constraint(:enrollment_number)
   end
 end

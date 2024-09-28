@@ -9,8 +9,16 @@ defmodule TrackMyClassWeb.Router do
     pipe_through :api
 
     get "/schools", SchoolController, :index
-    get "/schools/:id", SchoolController, :show
     post "/schools", SchoolController, :create
-    put "/schools/:id", SchoolController, :update
+    get "/schools/:school_id", SchoolController, :show
+    put "/schools/:school_id", SchoolController, :update
+    delete "/schools/:school_id", SchoolController, :delete
+
+
+    get "/schools/:school_id/students", StudentController, :index
+    post "/schools/:school_id/students", StudentController, :create
+    get "/schools/:school_id/students/:student_id", StudentController, :show
+    put "/schools/:school_id/students/:student_id", StudentController, :update
+    delete "/schools/:school_id/students/:student_id", StudentController, :delete
   end
 end
