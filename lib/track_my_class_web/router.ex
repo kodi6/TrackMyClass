@@ -5,7 +5,12 @@ defmodule TrackMyClassWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", TrackMyClassWeb do
+  scope "/api", TrackMyClassWeb.Api do
     pipe_through :api
+
+    get "/schools", SchoolController, :index
+    get "/schools/:id", SchoolController, :show
+    post "/schools", SchoolController, :create
+    put "/schools/:id", SchoolController, :update
   end
 end
