@@ -21,5 +21,4 @@ defmodule TrackMyClassWeb.Api.StudentJSON do
   def show(%{student: student}) do
     %{data: data(student)}
   end
-
 end

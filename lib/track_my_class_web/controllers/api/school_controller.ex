@@ -4,6 +4,8 @@ defmodule TrackMyClassWeb.Api.SchoolController do
   alias TrackMyClass.Schools.School
   alias TrackMyClass.Schools
 
+  action_fallback TrackMyClassWeb.FallbackController
+
   def index(conn, _params) do
     schools = Schools.list_schools()
     render(conn, :index, schools: schools)

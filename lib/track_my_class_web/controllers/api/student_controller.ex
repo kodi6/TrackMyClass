@@ -4,6 +4,8 @@ defmodule TrackMyClassWeb.Api.StudentController do
   alias TrackMyClass.Schools.Student
   alias TrackMyClass.Schools
 
+  action_fallback TrackMyClassWeb.FallbackController
+
   def index(conn, %{"school_id" => school_id}) do
     students = Schools.list_students(school_id)
     case students do
