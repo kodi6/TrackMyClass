@@ -9,8 +9,8 @@ defmodule TrackMyClassWeb.Api.SchoolController do
     render(conn, :index, schools: schools)
   end
 
-  def show(conn, %{"id" => id}) do
-    school = Schools.get_school!(id)
+  def show(conn, %{"school_id" => school_id}) do
+    school = Schools.get_school!(school_id)
     render(conn, :show, school: school)
   end
 
@@ -22,10 +22,17 @@ defmodule TrackMyClassWeb.Api.SchoolController do
     end
   end
 
-  def update(conn, %{"id" => id, "school" => school_params}) do
-    school = Schools.get_school!(id)
+  def update(conn, %{"school_id" => school_id, "school" => school_params}) do
+    school = Schools.get_school!(school_id)
     with {:ok, %School{} = school} <- Schools.update_school(school, school_params) do
       render(conn, :show, school: school)
+    end
+  end
+  def delete(conn, %{"school_id" => school_id}) do
+    school = Schools.get_school!(school_id)
+
+    with {:ok, %School{}} <- Schools.delete_school(school) do
+      send_resp(conn, :no_content, "")
     end
   end
 end

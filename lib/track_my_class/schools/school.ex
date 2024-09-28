@@ -7,6 +7,7 @@ defmodule TrackMyClass.Schools.School do
   schema "schools" do
     field :name, :string
     field :address, :string
+    has_many :students, TrackMyClass.Schools.Student
 
     timestamps(type: :utc_datetime)
   end

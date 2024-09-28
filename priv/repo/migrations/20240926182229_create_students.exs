@@ -9,7 +9,7 @@ defmodule TrackMyClass.Repo.Migrations.CreateStudents do
       add :enrollment_number, :string
       add :dob, :date
       add :gender, :string
-      add :school_id, references(:schools, on_delete: :nothing, type: :binary_id)
+      add :school_id, references(:schools, on_delete: :delete_all, type: :binary_id)
 
       timestamps(type: :utc_datetime)
     end

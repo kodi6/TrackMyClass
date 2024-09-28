@@ -7,7 +7,7 @@ defmodule TrackMyClass.Repo.Migrations.CreateAttendances do
       add :date, :date
       add :forenoon_present, :boolean, default: true, null: false
       add :afternoon_present, :boolean, default: true, null: false
-      add :student_id, references(:students, on_delete: :nothing, type: :binary_id)
+      add :student_id, references(:students, on_delete: :delete_all, type: :binary_id)
 
       timestamps(type: :utc_datetime)
     end
