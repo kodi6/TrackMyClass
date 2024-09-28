@@ -1,5 +1,6 @@
 defmodule TrackMyClass.Schools do
   import Ecto.Query, warn: false
+  alias ElixirLS.LanguageServer.Providers.Completion.Reducers.Struct
   alias TrackMyClass.Repo
 
   alias TrackMyClass.Schools.{
@@ -18,4 +19,9 @@ defmodule TrackMyClass.Schools do
     |> Repo.insert()
   end
 
+  def update_school(%School{} = school, attrs) do
+    school
+    |> School.changeset(attrs)
+    |> Repo.update()
+  end
 end
