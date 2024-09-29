@@ -1,5 +1,6 @@
 defmodule TrackMyClassWeb.Api.AttendanceJSON do
   alias TrackMyClass.Schools.Attendance
+
   def show(%{attendance: attendance}) do
     %{data: data(attendance)}
   end

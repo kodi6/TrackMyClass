@@ -14,7 +14,6 @@ defmodule TrackMyClassWeb.Router do
     put "/schools/:school_id", SchoolController, :update
     delete "/schools/:school_id", SchoolController, :delete
 
-
     get "/schools/:school_id/students", StudentController, :index
     post "/schools/:school_id/students", StudentController, :create
     get "/schools/:school_id/students/:student_id", StudentController, :show
@@ -22,12 +21,14 @@ defmodule TrackMyClassWeb.Router do
     delete "/schools/:school_id/students/:student_id", StudentController, :delete
 
     post "/schools/:school_id/students/:student_id/attendances", AttendanceController, :create
-
     get "/schools/:school_id/students/:student_id/attendances/:date", AttendanceController, :show
 
-    put "/schools/:school_id/students/:student_id/attendances/:attendance_id", AttendanceController, :update
+    put "/schools/:school_id/students/:student_id/attendances/:attendance_id",
+        AttendanceController,
+        :update
 
-    delete "/schools/:school_id/students/:student_id/attendances/:attendance_id", AttendanceController, :delete
-
+    delete "/schools/:school_id/students/:student_id/attendances/:attendance_id",
+           AttendanceController,
+           :delete
   end
 end
