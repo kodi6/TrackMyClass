@@ -20,5 +20,14 @@ defmodule TrackMyClassWeb.Router do
     get "/schools/:school_id/students/:student_id", StudentController, :show
     put "/schools/:school_id/students/:student_id", StudentController, :update
     delete "/schools/:school_id/students/:student_id", StudentController, :delete
+
+    post "/schools/:school_id/students/:student_id/attendances", AttendanceController, :create
+
+    get "/schools/:school_id/students/:student_id/attendances/:date", AttendanceController, :show
+
+    put "/schools/:school_id/students/:student_id/attendances/:attendance_id", AttendanceController, :update
+
+    delete "/schools/:school_id/students/:student_id/attendances/:attendance_id", AttendanceController, :delete
+
   end
 end

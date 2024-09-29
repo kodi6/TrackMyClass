@@ -4,7 +4,8 @@ defmodule TrackMyClass.Schools do
 
   alias TrackMyClass.Schools.{
     School,
-    Student
+    Student,
+    Attendance
   }
 
   def list_schools do
@@ -67,4 +68,30 @@ defmodule TrackMyClass.Schools do
     end
   end
 
+
+  def get_student_in_school(school_id, student_id) do
+    Repo.get_by(Student, id: student_id, school_id: school_id)
+  end
+
+  def create_attendance(attrs \\ %{}) do
+    %Attendance{}
+    |> Attendance.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def get_attendance_by_date(student_id, date) do
+    Repo.get_by(Attendance, student_id: student_id, date: date)
+  end
+
+  def get_attendance!(id), do: Repo.get!(Attendance, id)
+
+  def update_attendance(%Attendance{} = attendance, attrs) do
+    attendance
+    |> Attendance.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def delete_attendance(%Attendance{} = attendance) do
+    Repo.delete(attendance)
+  end
 end
