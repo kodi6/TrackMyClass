@@ -68,7 +68,6 @@ defmodule TrackMyClass.Schools do
     end
   end
 
-
   def get_student_in_school(school_id, student_id) do
     Repo.get_by(Student, id: student_id, school_id: school_id)
   end
